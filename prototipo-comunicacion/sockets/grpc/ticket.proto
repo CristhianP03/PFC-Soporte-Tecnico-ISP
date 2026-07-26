@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package soporte;
+
+service SoporteService {
+    rpc CrearTicket (TicketRequest) returns (TicketResponse);
+    rpc ConsultarTicket (ConsultarRequest) returns (TicketResponse);
+}
+
+message TicketRequest {
+    string asunto = 1;
+    string descripcion = 2;
+    int64 lamport_timestamp = 3;
+}
+
+message ConsultarRequest {
+    string ticket_id = 1;
+}
+
+message TicketResponse {
+    string ticket_id = 1;
+    string estado = 2;
+    int64 lamport_timestamp = 3;
+    string mensaje = 4;
+}
